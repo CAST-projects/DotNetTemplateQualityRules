@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<metrics>
+  <metric id="2000000" type="quality-rule" originalName="Example of a Custom Quality Rule" section="output">
+    <english>This is the description of the QR</english>
+  </metric>
+  <metric id="2000002" type="quality-rule" originalName="Another example of a Custom Quality Rule" section="output">
+    <english>This is the description of the other QR</english>
+  </metric>
+</metrics>
