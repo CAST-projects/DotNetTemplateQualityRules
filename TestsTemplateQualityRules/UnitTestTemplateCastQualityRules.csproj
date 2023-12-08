@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+	<Platforms>x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.2" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageReference Include="NunitXml.TestLogger" Version="3.0.131" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\TemplateCastQualityRules\TemplateCastQualityRules.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+	<Reference Include="RoslynToolBox.dll">
+		<HintPath Condition=" '$(OS)' == 'Unix' ">../references/linux/RoslynToolBox.dll</HintPath>
+		<HintPath Condition=" '$(OS)' == 'Windows_NT' ">../references/windows/RoslynToolBox.dll</HintPath>
+	</Reference>
+	<Reference Include="CastDotNetExtension.dll">
+		<HintPath Condition=" '$(OS)' == 'Unix' ">../references/linux/CastDotNetExtension.dll</HintPath>
+		<HintPath Condition=" '$(OS)' == 'Windows_NT' ">../references/windows/CastDotNetExtension.dll</HintPath>
+    </Reference>
+	<Reference Include="CastDotNetExtensionTestTools.dll">
+		<HintPath Condition=" '$(OS)' == 'Unix' ">../references/linux/CastDotNetExtensionTestTools.dll</HintPath>
+		<HintPath Condition=" '$(OS)' == 'Windows_NT' ">../references/windows/CastDotNetExtensionTestTools.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

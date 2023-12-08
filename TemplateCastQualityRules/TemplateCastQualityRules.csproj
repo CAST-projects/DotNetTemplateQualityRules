@@ -2,33 +2,8 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Platforms>x64</Platforms>
-  </PropertyGroup>
-
-  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), SourcesRootMarker))\_build\config\cast-dotnet-core.props" />
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-   <PlatformTarget>x64</PlatformTarget>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <PlatformTarget>x64</PlatformTarget>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <PlatformTarget>x64</PlatformTarget>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <PlatformTarget>x64</PlatformTarget>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <!-- <OutputPath>$(DependencyFilePath)</OutputPath> -->
-    <OutputPath>$(OUTPUT_DIR)</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -41,11 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Analyzer\CastDotNetExtension\CastDotNetExtension.csproj" />
-    <ProjectReference Include="..\..\Analyzer\RoslynToolBox\RoslynToolBox.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Configuration\Languages\DotNet\TemplateCastQualityRulesMetaModel.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -55,6 +25,17 @@
     <Content Include="MasterFiles\SPECDocumentation.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+	<Reference Include="RoslynToolBox.dll">
+		<HintPath Condition=" '$(OS)' == 'Unix' ">../references/linux/RoslynToolBox.dll</HintPath>
+		<HintPath Condition=" '$(OS)' == 'Windows_NT' ">../references/windows/RoslynToolBox.dll</HintPath>
+	</Reference>
+	<Reference Include="CastDotNetExtension.dll">
+		<HintPath Condition=" '$(OS)' == 'Unix' ">../references/linux/CastDotNetExtension.dll</HintPath>
+		<HintPath Condition=" '$(OS)' == 'Windows_NT' ">../references/windows/CastDotNetExtension.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
